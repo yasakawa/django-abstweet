@@ -1,16 +1,13 @@
 from django.db import models, connection
-from django.conf import settings as django_settings
+from django.conf import settings
 from datetime import datetime, timedelta
 from email.utils import parsedate
 from django.utils import timezone
 import os
 import socket
-from . import settings
 from django.core.exceptions import ObjectDoesNotExist
 from swapper import swappable_setting
 from . import fields
-
-from django.conf import settings
 
 DEBUG = getattr(settings, 'DEBUG', False)
 USE_TZ = getattr(settings, 'USE_TZ', True)
@@ -155,7 +152,7 @@ class AbstractTweet(models.Model):
         Get the approximate number of tweets.
         Executes quickly, even on large InnoDB tables.
         """
-        if django_settings.DATABASES['default']['ENGINE'].endswith('mysql'):
+        if settings.DATABASES['default']['ENGINE'].endswith('mysql'):
             query = "SHOW TABLE STATUS WHERE Name = %s"
             cursor = connection.cursor()
             cursor.execute(query, [cls._meta.db_table])
