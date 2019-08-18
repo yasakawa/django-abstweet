@@ -7,7 +7,6 @@ import os
 import socket
 from django.core.exceptions import ObjectDoesNotExist
 from swapper import swappable_setting
-from . import fields
 
 DEBUG = getattr(settings, 'DEBUG', False)
 USE_TZ = getattr(settings, 'USE_TZ', True)
