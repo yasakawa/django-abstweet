@@ -31,10 +31,10 @@ class AbstractTweet(models.Model):
     class Meta:
         abstract = True
 
-    id = fields.BigAutoField(primary_key=True)
+    id = BigAutoField(primary_key=True)
 
     # Basic tweet info
-    tweet_id = models.BigIntegerField()
+    tweet_id = models.BigIntegerField(unique=True)
     text = models.CharField(max_length=250)
     truncated = models.BooleanField(default=False)
     lang = models.CharField(max_length=9, null=True, blank=True, default=None)
