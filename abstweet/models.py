@@ -31,7 +31,7 @@ class AbstractTweet(models.Model):
     class Meta:
         abstract = True
 
-    id = BigAutoField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
 
     # Basic tweet info
     tweet_id = models.BigIntegerField(unique=True)
